@@ -122,8 +122,8 @@ shinyServer(function(input, output) {
       abline(h=0)
       topcatpos <- substr(colnames(c3)[grep(max(c3[c3>0], na.rm=T), c3)],6,20)
       topcatneg <- substr(colnames(c3)[grep(max(abs(c3[c3<0]), na.rm=T), c3)],6,20)
-      mtext(paste("In", options$finalcity, topcatpos, "has the strongest positive impact on access to", input$estabs2,
-                  "\n while", topcatneg, "has the strongest negative impact."), side=3, cex=0.95, font=3, outer=TRUE)
+      mtext(paste("In", options$finalcity, topcatpos, "has the strongest positive impact on access to", input$estabs2, "(meaning that locations \n with high values of", topcatpos, "have more nearby", input$estabs2, ").",
+                  topcatneg, "has the strongest negative impact, \n meaning that locations with high values of", topcatneg, "have fewer", input$estabs2, "nearby."), side=3, cex=0.95, font=3, outer=TRUE)
     })
     output$var_desc <- renderText({
       as.character(dest$descr[dest$name==input$estabs2])

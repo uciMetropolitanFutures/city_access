@@ -16,7 +16,6 @@ names = as.character(unique(unlist(dfsub$NAME10)))
 est = c('Apparel Retailing', 'Auto Services', 'Beer, Wine, and Liquor Stores', 'Child Care Services', 'Convenience Stores', 'Deposit-taking Institutions', 'Drinking Places', 'Drug Stores', 'Elementary and Secondary Schools', 'Full-Service Restaurants', 'Gas Stations', 'General Merchandise Retailing', 'Groceries', 'Hair Care Services', ' ', 'Home Products Retailing', 'Hospitals', 'Laundry', 'Limited-Service Food and Beverage', 'Medical Laboratories', 'Open Space', 'Other Learning', 'Other Personal Services', 'Personal Financial', 'Personal Products Retailing', 'Recreational Facilities and Instruction', 'Religious Organizations', 'Repair Services', 'Social Service Organizations', 'Specialty Food', 'Specialty Retailing')
 
 shinyUI(navbarPage("Accessibility to everyday destinations in SoCal Cities.", id="nav",
-  
   tabPanel("Access Across Cities", div(class="outer",
           tags$head(includeCSS("styles.css")),
           leafletOutput("map", width="100%", height="100%"),
@@ -33,10 +32,10 @@ shinyUI(navbarPage("Accessibility to everyday destinations in SoCal Cities.", id
                         plotOutput("hist", height=235)),
           absolutePanel(id="controls", class="panel panel-default", fixed=T, draggable=T,
                         top=110, left=10, right="auto", bottom="auto", width=175, height="auto",
-                        p(strong("Data notes:")),
-                        h6("-- This map shows how accessible homes in a city are to a variety of everyday destinations."),
+                        h6(em("This map shows how accessible homes in a city are to a variety of everyday destinations.")),
                         h6("-- ", strong("Abundance"), "shows how many of that destination type are within one mile of the average home in the selected city."),
                         h6("-- ", strong("Percent serviced"), "displays the % of homes in a city which have at least one of that destination in one mile."),
+                        h6("--", strong("Total # of Destinations in city"), "shows how many of that business type are within the selected city."),
                         h6("-- All distances are calculated along a street network."),
                         h6("-- 1/5 of the region's cities are each color on the map."),
                         h6("-- Make sure to click Refresh after changing the selection."),
@@ -74,7 +73,7 @@ shinyUI(navbarPage("Accessibility to everyday destinations in SoCal Cities.", id
          " See", a("the full report here.", href="http://mfi.soceco.uci.edu/category/quarterly-report/", target="_blank"))),
     mainPanel(
       h2(strong("What Impacts How Close Things Are to Me?", style="color:blue")),
-      h6(em("-- The bars below correspond to characteristics of the ", strong("home ", style="color:blue"), "or the ", strong("neighborhood.", style="color:blue"), "For housing types, e.g. Condo, we show the effect of Condo status on access versus a detached, single-family home.")),
+      h6(em("-- The bars below correspond to characteristics of the ", strong("home ", style="color:blue"), "or the ", strong("neighborhood.", style="color:blue"), "For housing types, e.g. Condo, we show the effect of Condo status on access compared to a detached, single-family home.")),
       h6(em("-- The height of each bar shows how much impact that characteristic has on accessibility to the chosen destination.")),
       plotOutput("bar", height = 500))
     ))
